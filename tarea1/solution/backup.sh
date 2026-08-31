@@ -32,7 +32,7 @@ if [ "$2" != "" ]; then
 	fi
 fi
 
-tar -czf "$directorio_salida/$nombre_tar" "$1"
+tar --directory="$(dirname "$1")" -czf "$directorio_salida/$nombre_tar" "$(basename "$1")"
 
 cat << EOF
 Respaldo creado: $directorio_salida/$nombre_tar
