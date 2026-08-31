@@ -22,6 +22,7 @@ fi
 directorio_salida=$PWD
 nombre_base="$(basename "$1")"
 marca_de_tiempo=$(date '+%Y%m%d_%H%M%S')
+nombre_tar="backup_${nombre_base}_${marca_de_tiempo}.tar.gz"
 
 if [ "$2" != "" ]; then
 	if [[ "$2" = /* ]]; then
@@ -31,10 +32,10 @@ if [ "$2" != "" ]; then
 	fi
 fi
 
-tar -czf "$directorio_salida/backup_${nombre_base}_${marca_de_tiempo}.tar.gz" "$1"
+tar -czf "$directorio_salida/$nombre_tar" "$1"
 
 cat << EOF
-Respaldo creado: $directorio_salida
+Respaldo creado: $directorio_salida/$nombre_tar
 EOF
 
 exit 0
