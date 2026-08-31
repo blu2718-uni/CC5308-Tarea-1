@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 
 if [ "$#" -ne 1 ]; then
-	echo "Argumentos inválidos. Uso: $0 <directorio>" 
+	echo "Argumentos inválidos. Uso: $0 <directorio>"
 	echo "Cantidad de argumentos inválida" >&2
 	exit 1
 fi
