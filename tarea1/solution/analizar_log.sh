@@ -1,8 +1,13 @@
 #!/usr/bin/env bash
-
 if [ "$#" -ne 1 ]; then
-	echo "Uso: $0 <ruta a log>" >&2
+	echo "Argumentos inválidos. Uso: $0 <ruta al log>"
+	echo "Cantidad de argumentos inválidos" >&2
 	exit 1
+fi
+
+if [ "$1" == "-h" ] || [ "$1" == "--help" ]; then
+	echo "Uso: $0 <ruta al log>"
+	exit 0
 fi
 
 if [ ! -f "$1" ]; then
@@ -24,3 +29,5 @@ Peticiones con error: $total_errores
 IP con más peticiones: $(tail -n 1 <<< $ip_frecuente) ($(head -n 1 <<< $ip_frecuente) peticiones)
 Direcciones IP únicas: $ip_unicas
 EOF
+
+exit 0
