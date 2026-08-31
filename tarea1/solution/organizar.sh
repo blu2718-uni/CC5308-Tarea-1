@@ -27,7 +27,7 @@ for archivo in "$1"/*; do
 		categoria="${extension,,}"
 		archivos=$((archivos + 1))
 		
-		if [ "${archivo##*.}" != "$archivo" ]; then
+		if [ "$(grep "\." <<< "$(basename "$archivo")")" != "" ]; then
 			if ! grep -qx "$categoria" <<< "$categorias"; then
 				categorias="$categorias$categoria"$'\n'
 			fi
