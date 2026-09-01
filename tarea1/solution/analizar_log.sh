@@ -15,11 +15,11 @@ if [ ! -f "$1" ]; then
 	exit 2
 fi
 
-ruta=$1
+ruta="$1"
 total_peticiones=$(wc -l < $ruta)
-codigos_http=$(cut -d" " -f9 $1)
+codigos_http=$(cut -d" " -f9 "$1")
 total_errores=$(wc -l <<< $(grep -v 200 <<< $codigos_http))
-ips=$(cut -d" " -f1 $1)
+ips=$(cut -d" " -f1 "$1")
 ip_frecuente=$(grep -oE "[^ ]+" <<< $(head -n 1 <<< $(sort -nr <<< $(uniq -c <<< $ips))))
 ip_unicas=$(wc -l <<< $(uniq <<< $ips))
 
